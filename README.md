@@ -3,6 +3,7 @@ Patent slurper for Dr Lars Hass, LUMS
 
 # TODO
 
+
 1) Add stripper for redundant xml tags
 2) Harvest below data from Google dumps 2001-2015:
 -------------------------------------------------------------------------------
