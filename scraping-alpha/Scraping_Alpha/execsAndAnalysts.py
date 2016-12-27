@@ -102,3 +102,10 @@ with open("analysts.sql", 'rb+') as filehandle:
     filehandle.seek(-1, os.SEEK_END)
     filehandle.truncate()
     filehandle.write(";")
+    # `analysts.sql` then performs some cleanup on the database.
+    filehandle.write("\n\nALTER TABLE `transcripts`\n\tDROP COLUMN `execs`,\n\tDROP COLUMN `analysts`;\n\n")
+    filehandle.write("DELETE FROM `transcripts` WHERE `id` = 0;\n")
+    filehandle.write("DELETE FROM `execs` WHERE `id` = 0;\n")
+    filehandle.write("DELETE FROM `analysts` WHERE `id` = 0;\n")
+    filehandle.write("DELETE FROM `execs_to_transcripts` WHERE `transcript_id` = 0;\n")
+    filehandle.write("DELETE FROM `analysts_to_transcripts` WHERE `transcript_id` = 0;\n")
