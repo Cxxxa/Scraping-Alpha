@@ -78,4 +78,4 @@ Export the resulting table ([instructions](http://serverfault.com/a/435443)) to
 It creates from this two files (`execs.sql` and `analysts.sql`). Import them 
 into your DBMS to create two linking tables. The final instruction of 
 `analysts.sql` then deletes the superfluous `execs` and `analysts` columns from 
-the `transcripts` table.
+the `transcripts` table (and for this reason, `execs.sql` must be imported first).
