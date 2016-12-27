@@ -1,4 +1,5 @@
-#
+#-*- coding: utf-8 -*-
+
 #	Title: Scraping Alpha
 #	Version: 1.0
 #	Author: Ben Goldsworthy <b.goldsworthy@lancaster.ac.uk>
@@ -23,10 +24,6 @@
 # 	-o transcripts.json' at the command line (the output file will be placed
 #	in the directory the Terminal is currently in).
 #
-
-# Some of the <Exec, Position> tuples are separate by an em- rather than an
-# en-dash, which isn't featured in the ASCII charset, hence the below line:
-#-*- coding: utf-8 -*-
 
 import scrapy
 # This enum lists the stages of each transcript.
@@ -112,7 +109,7 @@ class TranscriptSpider(scrapy.Spider):
 								if date in titleAndDate:
 									splits = titleAndDate.split(date)
 									details['title'] = splits[0]
-									details['date'] = dates + splits[1]
+									details['date'] = date + splits[1]
 					# Otherwise, we're onto the title line.
 					elif i == 1:
 						title = chunks[i].css('p::text').extract_first()

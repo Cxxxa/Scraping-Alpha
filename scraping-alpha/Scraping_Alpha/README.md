@@ -79,3 +79,7 @@ It creates from this two files (`execs.sql` and `analysts.sql`). Import them
 into your DBMS to create two linking tables. The final instruction of 
 `analysts.sql` then deletes the superfluous `execs` and `analysts` columns from 
 the `transcripts` table (and for this reason, `execs.sql` must be imported first).
+
+### Future
+
+Harvesting the URLs of slide images shouldn't be too hard to implement - `slides_spider.py` should in theory to this, but the link to a transcript's slides is added to the page later via Javascript, which means at the moment it throws up a load of HTTP 200 status codes and nowt else. [Scrapy+Splash](https://github.com/scrapy-plugins/scrapy-splash) may be the solution, however.
