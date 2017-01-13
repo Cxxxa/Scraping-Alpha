@@ -1,16 +1,16 @@
 # Scraping Alpha
 
-### Author
+## Author
 
 Ben Goldsworthy
 <[email](mailto:b.goldsworthy@lancaster.ac.uk)> 
 <[website](http://www.bengoldsworthy.uk/)>
 
-### Version
+## Version
 
 1.0
 
-### Abstract
+## Abstract
 
 Scraping Alpha is a series of Python scripts used to scrape 
 [Seeking Alpha](http://seekingalpha.com/) earnings call transcripts and produce 
@@ -18,13 +18,13 @@ SQL from them.
 
 It was created for Dr Lars Hass of the Lancaster University Management School.
 
-### Usage
+## Usage
 
 The instructions for each step of the process can be found at the beginning of 
 each of the files involved: `transcript_spider.py`, `JSONtoSQL.py` and 
 `execsAndAnalysts.py`. The are repeated here for brevity.
 
-#### `transcript_spider.py`
+### `transcript_spider.py`
 
 This file is the webspider that Scrapy uses to retrieve the information from the
  website. Left unattended, it will scrape all 4,000+ pages of results.
@@ -54,7 +54,7 @@ For installation instructions for Scrapy, see
  transcripts -o transcripts.json` at the command line (the output file will be 
  placed in the directory the Terminal is currently pointing to).
 
-#### `JSONtoSQL.py`
+### `JSONtoSQL.py`
 
 This file takes the `transcripts.json` file output of `transcript_spider.py` and
  converts it into SQL.
@@ -63,7 +63,7 @@ This file should be located in the same directory as `transcripts.json`, and is
 run via `python JSONtoSQL.py > [FILE].sql`, where `[FILE]` is the desired name 
 of the output file. 
 
-#### `execsAndAnalysts.py`
+### `execsAndAnalysts.py`
 
 First, import the output file of `JSONtoSQL.py` to your chosen DBMS (I've tested
  it with phpMyAdmin). Then, run the following query:
@@ -80,6 +80,6 @@ into your DBMS to create two linking tables. The final instruction of
 `analysts.sql` then deletes the superfluous `execs` and `analysts` columns from 
 the `transcripts` table (and for this reason, `execs.sql` must be imported first).
 
-### Future
+## Future
 
 Harvesting the URLs of slide images shouldn't be too hard to implement - `slides_spider.py` should in theory to this, but the link to a transcript's slides is added to the page later via Javascript, which means at the moment it throws up a load of HTTP 200 status codes and nowt else. [Scrapy+Splash](https://github.com/scrapy-plugins/scrapy-splash) may be the solution, however.
